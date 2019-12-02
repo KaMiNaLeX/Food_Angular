@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en"  xmlns:sec="http://www.thymeleaf.org.thymeleaf-extras-springsecurity5">
+<head>
+    <!--<meta charset="utf-8">-->
+
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
+
+    <title>Cooker</title>
+
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="css/style.css?v=2">
+
+    <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
+    <script src="js/libs/modernizr-1.7.min.js"></script>
+    <script src="js/xmlhttprequest.js"></script>
+
+</head>
+
+<body class="home" onload="featured_meals()">
+
+<!-- LOGIN POP UPS -->
+<div id="popup-overlay"></div>
+
+<div class="popup" id="popup-login">
+    <h2>Login form</h2>
+    <hr class="separator">
+    <form method="post" action="/login" class="form clearfix">
+        <fieldset>
+            <label for="username">Login:</label>
+            <input type="text" name="username" id="username" class="input text">
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" class="input text">
+        </fieldset>
+
+        <hr class="separator">
+        <button type="submit" class="button submit">Login</button>
+    </form>
+    <div class="links"><a href="">Forgotten password </a> | <a href="#" class="register-btn"> New account</a></div>
+    <a class="close" href="#"></a>
+</div>
+<div class="popup" id="popup-register">
+    <h2>Registration form</h2>
+    <hr class="separator">
+    <form class="form clearfix" name="reg">
+        <fieldset>
+            <label>Surname:</label>
+            <input type="text" name="surname" id="surname" class="input text">
+            <label>Phone:</label>
+            <input type="text" name="phone" id="phone" class="input text">
+            <label>Address:</label>
+            <input type="text" name="address" id="address" class="input text">
+            <label>Login:</label>
+            <input type="text" name="login" id="login" class="input text">
+            <label>Password:</label>
+            <input type="password" name="clientPassword" id="clientPassword" class="input text">
+
+        </fieldset>
+
+        <hr class="separator">
+
+        <button type="button" class="button" onclick="registration()">Register now</button>
+    </form>
+    <a class="close" href="#"></a>
+</div>
+
+<!-- END LOGIN POP UPS -->
+<div class='wrapper'>
+    <header>
+        <div class="top-nav">
+            <nav>
+                <ul>
+                    <li><a href="#" id="login-btn">login</a></li>
+                    <li><a href="#" class="register-btn">register</a></li>
+                    <li sec:authorize="isAuthenticated()"><a id="orders" href="/orders">orders</a></li>
+                    <li sec:authorize="isAuthenticated()"><a id="check" href="/check-out">cart</a></li>
+                    <li sec:authorize="hasAuthority('ADMIN_ROLE')"><a href="/createDish" >create dish</a></li>
+                </ul>
+            </nav>
+            <div sec:authorize="isAuthenticated()">
+                <label><h3 class="mar-l-10" id="I">id</h3></label>
+                <label><h3 class="mar-t-10" sec:authentication="name" id="L"></h3></label>
+            </div>
+
+        </div>
+        <a href="/index" class="logo"><img src="images/logo.png" alt="your logo"/></a>
+        <nav class="main-menu">
+            <ul>
+                <li id="lava-elm"></li>
+                <li><a id="pizza" href="/pizza">Pizza</a>
+                </li>
+                <li><a id="burgers" href="/burgers">Burgers</a>
+                </li>
+                <li><a id="drinks" href="/drinks">Drinks</a></li>
+                <li><a id="deserts" href="/deserts">Desserts</a></li>
+            </ul>
+        </nav>
+        <div class="header-slider-canvas">
+            <div class="parts part-1"></div>
+            <div class="parts part-2"></div>
+            <div class="parts part-3"></div>
+        </div>
+
+        <ul id="mycarousel" class="jcarousel-skin-header-slider">
+            <li><img src="images/1.png" width="680px" height="464" alt=""/>
+                <div class="description"><span class='price'>$75.00</span><span
+                        class='name'>Lamb chops and asparagus</span><a href="#" class="shop">shop now</a></div>
+            </li>
+            <li><img src="images/2.png" width="680px" height="464" alt=""/>
+                <div class="description"><span class='price'>$25.00</span><span
+                        class='name'>Lamb chops and asparagus</span><a href="#" class="shop">shop now</a></div>
+            </li>
+        </ul>
+    </header>
+    <div class="content clearfix">
+
+        <h3 class="title-separator"><span class="title">Featured meals</span><span class="sep"></span></h3>
+
+        <div id="featured-meals">
+            <ul>
+                <li class="meal" id="meal">
+
+                    <div class="img-holder"><img name="img" src="images/meal-5.jpg" alt=""></div>
+                    <h1><a href="#"><label name="name"></label></a></h1>
+                    <div class="date_categories">
+                        ID: <a href="#" name="">
+                        <label name="id" id="id">1</label></a>
+                    </div>
+                    <p name="descriptionn">Lorem ipsum dolor sit amet.</p>
+                    <span name="cost" class="price">$15.45</span>
+                    <button class="add-to-cart-button" onclick="add_to_cart()" type="button" name="add">add to cart
+                    </button>
+                </li>
+                <!--<li class="meal">-->
+                <!--<div class="img-holder"><img id="img2" src="images/meal-5.jpg" alt=""></div>-->
+                <!--<h1><a href="#" name="name2">Lorem ipsum</a></h1>-->
+                <!--<p name="description2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>-->
+                <!--<span class="price" name="cost2">$15.45</span>-->
+                <!--<a href="/check-out" class="add-to-cart-button">add to cart</a>-->
+                <!--</li>-->
+            </ul>
+        </div>
+
+
+        <!--<div sec:authorize="isAuthenticated()" class="cart-box">-->
+            <!--<div class="top">Cart</div>-->
+            <!--<div class="body">-->
+                <!--<ul>-->
+                    <!--<li class="info">-->
+                        <!--<span class="products"><strong>5</strong> products</span>-->
+                    <!--</li>-->
+                    <!--<li class="price">-->
+                        <!--<span class="label">Shipping</span>-->
+                        <!--<span class="value">$0.00</span>-->
+                    <!--</li>-->
+                    <!--<li class="price">-->
+                        <!--<span class="label">Total</span>-->
+                        <!--<span class="value">$0.00</span>-->
+                    <!--</li>-->
+                <!--</ul>-->
+                <!--<a class="submit-button" id="check-out" href="/check-out">Check out</a>-->
+                <!--<div class="graphic"></div>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+</div>
+</body>
+
+
+<script type="text/javascript" src="js/libs/jquery-1.7.1.min.js"></script>
+<script src="js/libs/jquery.easing.1.3.js"></script>
+<script src="js/script.js"></script>
+<script src="js/libs/jquery.jcarousel.min.js"></script>
+
+<script type="text/javascript">
+    // FRONT SLIDER STARTER
+
+    jQuery(document).ready(function () {
+        jQuery('#mycarousel').jcarousel({
+            auto: 3,
+            wrap: 'last',
+            scroll: 1,
+            animation: 'slow',
+            initCallback: mycarousel_initCallback,
+        });
+    });
+</script>
+</html>
