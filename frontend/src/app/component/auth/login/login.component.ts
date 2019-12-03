@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, NgForm, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {AuthService} from "../../service/auth.service";
+import {AuthService} from "../../../service/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -28,10 +28,11 @@ export class LoginComponent implements OnInit {
   onFormSubmit(form: NgForm) {
     this.authService.login(form)
       .subscribe(res => {
-        if (res.token) {
+        if (res.token && res.username && res.id) {
           localStorage.setItem('token', res.token);
-          // localStorage.setItem('email', email);
-          this.router.navigate(['category']);
+          localStorage.setItem('username', res.username);
+          localStorage.setItem('id', res.id);
+          this.router.navigate(['/']);
         }
       }, (err) => {
         console.log(err);
@@ -39,7 +40,7 @@ export class LoginComponent implements OnInit {
   }
 
   register() {
-    this.router.navigate(['register']);
+    this.router.navigate(['registry']);
   }
 
 }

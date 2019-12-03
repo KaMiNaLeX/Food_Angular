@@ -11,7 +11,7 @@ import {DrinksComponent} from './component/drinks/drinks.component';
 import {OrdersComponent} from './component/orders/orders.component';
 import {OrdersDishesComponent} from './component/orders-dishes/orders-dishes.component';
 import {PizzaComponent} from './component/pizza/pizza.component';
-import {LoginComponent} from './component/login/login.component';
+import {LoginComponent} from './component/auth/login/login.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {TokenInterceptor} from "./interceptors/token.interceptor";
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -27,6 +27,8 @@ import {
   MatTableModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {RegisterComponent} from './component/auth/register/register.component';
+import {AuthService} from "./service/auth.service";
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     OrdersComponent,
     OrdersDishesComponent,
     PizzaComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +66,10 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
+    },
+    {
+      provide: AuthService,
+      useClass: AuthService
     }
   ],
   bootstrap: [AppComponent]

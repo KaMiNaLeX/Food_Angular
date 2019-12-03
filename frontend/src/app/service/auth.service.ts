@@ -24,12 +24,10 @@ export class AuthService {
       );
   }
 
-  logout(): Observable<any> {
-    return this.http.get<any>(apiUrl + 'signout')
-      .pipe(
-        tap(_ => this.isLoggedIn = false),
-        catchError(this.handleError('logout', []))
-      );
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
+    localStorage.removeItem('id');
   }
 
   register(data: any): Observable<any> {
