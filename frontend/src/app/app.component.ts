@@ -20,6 +20,11 @@ export class AppComponent {
     this.authenticated = false;
   }
 
+  pizza() {
+    localStorage.setItem('pizza', 'Pizza')
+    this.router.navigate(['pizza']);
+  }
+
   constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService,
               private http: HttpClient) {
     this.authenticate();

@@ -1,1 +1,15 @@
-<p>pizza works!</p>
+<div class="card-columns">
+  <div class="card" *ngFor="let pizza of pizzas" style="width: 500px;">
+    <div class="card border-primary mb-3" style="max-width: 500px;">
+      <img src="{{pizza.img_source}}" class="card-img-top" alt="">
+      <div class="card-body">
+        <h5 class="card-title">{{ pizza.name }}</h5>
+        <p class="card-text">{{ pizza.description }}</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">{{ pizza.mass }}</small>
+      </div>
+    </div>
+  </div>
+</div>

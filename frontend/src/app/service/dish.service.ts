@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {Dish} from "../model/dish";
 
 @Injectable({
   providedIn: 'root'
@@ -25,8 +26,8 @@ export class DishService {
     return this.http.get(`${this.baseUrl}/${id}`);
   }
 
-  getAllDishesByCategory(category: string): Observable<Object> {
-    return this.http.get(`${this.baseUrl}/category/${category}`);
+  getAllDishesByCategory(category: string): Observable<Dish[]> {
+    return this.http.get<Dish[]>(`${this.baseUrl}/category/${category}`);
   }
 
   getByIdDTO(id: number): Observable<Object> {
