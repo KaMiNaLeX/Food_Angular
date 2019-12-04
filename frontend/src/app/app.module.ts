@@ -29,6 +29,7 @@ import {
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {RegisterComponent} from './component/auth/register/register.component';
 import {AuthService} from "./service/auth.service";
+import {ShoppingCartService} from "./service/shopping-cart.service";
 
 @NgModule({
   declarations: [
@@ -70,6 +71,10 @@ import {AuthService} from "./service/auth.service";
     {
       provide: AuthService,
       useClass: AuthService
+    },
+    {
+      provide: ShoppingCartService,
+      useClass: ShoppingCartService
     }
   ],
   bootstrap: [AppComponent]

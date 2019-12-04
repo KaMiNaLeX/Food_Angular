@@ -28,6 +28,7 @@ export class AuthService {
     localStorage.removeItem('token');
     localStorage.removeItem('username');
     localStorage.removeItem('id');
+    localStorage.removeItem('pizza');
   }
 
   register(data: any): Observable<any> {
