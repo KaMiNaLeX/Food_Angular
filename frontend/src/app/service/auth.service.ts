@@ -38,6 +38,10 @@ export class AuthService {
       );
   }
 
+  principal() {
+    return this.http.get(apiUrl + 'user');
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 

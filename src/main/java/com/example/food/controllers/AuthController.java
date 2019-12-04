@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -70,5 +71,10 @@ public class AuthController {
         Map<Object, Object> model = new HashMap<>();
         model.put("message", "User registered successfully");
         return ok(model);
+    }
+
+    @RequestMapping("/user")
+    public Long user(Principal user) {
+        return userService.getByLogin(user.getName()).getId();
     }
 }
