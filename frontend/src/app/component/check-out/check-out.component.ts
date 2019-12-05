@@ -34,7 +34,7 @@ export class CheckOutComponent implements OnInit {
     var clientId = localStorage.getItem('id');
     this.order.timeOrder = new Date();
     this.order.clientId = +clientId;
-    this.order.sum = 200;
+    this.order.sum = 0;
     this.order.dishesDtoList = new Array<Dish>();
     for (i; i < count; i++) {
       var dish = new Dish();
@@ -44,6 +44,7 @@ export class CheckOutComponent implements OnInit {
       dish.name = document.getElementsByName('name')[i].textContent;
       dish.mass = +document.getElementsByName('mass')[i].textContent;
       dish.menu_id = +document.getElementsByName('menuId')[i].textContent;
+      this.order.sum += +document.getElementsByName("cost")[i].textContent;
       this.order.dishesDtoList.push(dish);
     }
     this.orderService.create(this.order).subscribe(data => {
