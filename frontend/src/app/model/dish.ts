@@ -4,4 +4,5 @@ export class Dish {
   mass: number;
   name: string;
   img_source: string;
+  menu_id: number;
 }

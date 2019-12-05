@@ -21,8 +21,12 @@ export class AppComponent {
   }
 
   pizza() {
-    localStorage.setItem('pizza', 'Pizza')
+    localStorage.setItem('pizza', 'Pizza');
     this.router.navigate(['pizza']);
+  }
+
+  shoppingCart() {
+    this.router.navigate(['checkout']);
   }
 
   constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService,

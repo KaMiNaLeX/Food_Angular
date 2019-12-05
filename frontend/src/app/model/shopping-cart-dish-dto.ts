@@ -3,9 +3,9 @@ export class ShoppingCartDishDto {
   description: string;
   mass: number;
   name: string;
-  imgSource: string;
+  img_source: string;
   category: string;
   cost: number;
-  menuId: number;
-  dishId: number;
+  menu_id: number;
+  dish_id: number;
 }

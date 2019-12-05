@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ShoppingCart} from "../model/shopping-cart";
 import {Observable} from "rxjs";
+import {ShoppingCartDishDto} from "../model/shopping-cart-dish-dto";
 
 @Injectable({
   providedIn: 'root'
@@ -22,8 +23,8 @@ export class ShoppingCartService {
     return this.http.get(`${this.baseUrl}/?page=0?size=15`);
   }
 
-  getByLogin(login: string): Observable<Object> {
-    return this.http.get(`${this.baseUrl}/${login}`);
+  getByLogin(login: string): Observable<ShoppingCartDishDto[]> {
+    return this.http.get<ShoppingCartDishDto[]>(`${this.baseUrl}/${login}`);
   }
 
   public delete(id: number): Observable<any> {

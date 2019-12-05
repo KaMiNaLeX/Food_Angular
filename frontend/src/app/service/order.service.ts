@@ -14,7 +14,7 @@ export class OrderService {
     this.baseUrl = '/orders';
   }
 
-  public create(order: Order) {
+  public create(order: Order): Observable<Order> {
     return this.http.post<Order>(`${this.baseUrl}/create`, order);
   }
 
