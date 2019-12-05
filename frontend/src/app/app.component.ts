@@ -29,6 +29,10 @@ export class AppComponent {
     this.router.navigate(['checkout']);
   }
 
+  orders() {
+    this.router.navigate(['orders']);
+  }
+
   constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService,
               private http: HttpClient) {
     this.authenticate();

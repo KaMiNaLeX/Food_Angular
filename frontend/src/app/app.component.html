@@ -20,6 +20,11 @@
           <button type="button" mat-flat-button color="primary" (click)="shoppingCart()">Shopping Cart</button>
         </li>
       </div>
+      <div [hidden]="!authenticated">
+        <li class="nav-item">
+          <button type="button" mat-flat-button color="primary" (click)="orders()">Orders</button>
+        </li>
+      </div>
     </ul>
   </div>
   <div class="button-row">

@@ -1,1 +1,20 @@
-<p>orders-dishes works!</p>
+<div class="card-columns">
+  <div class="card" *ngFor="let shoppingCartDish of shoppingCartDishes" style="width: 500px;">
+    <div class="card border-primary mb-3" style="max-width: 500px;">
+      <img name="img_source" src="{{shoppingCartDish.img_source}}" class="card-img-top" alt="">
+      <div class="card-body">
+        <a><h5 name="name" class="card-title">{{ shoppingCartDish.name }}</h5></a>
+        <div><label name="description" class="card-text">{{ shoppingCartDish.description }}</label></div>
+        <br/>
+        <div><label name="category" class="card-text">{{ shoppingCartDish.category }}</label></div>
+        <a> Cost:<label name="cost" class="card-text">{{ shoppingCartDish.cost }}</label>$</a>
+        <a><label name="dishId" hidden="hidden" class="card-text">{{ shoppingCartDish.dish_id }}</label></a>
+        <a><label name="menuId" hidden="hidden" class="card-text">{{ shoppingCartDish.menu_id }}</label></a>
+      </div>
+      <div class="card-footer">
+        <small name="mass" class="text-muted">{{ shoppingCartDish.mass }}</small>
+      </div>
+    </div>
+
+  </div>
+</div>

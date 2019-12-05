@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Order} from "../model/order";
 import {Observable} from "rxjs";
+import {ShoppingCartDishDto} from "../model/shopping-cart-dish-dto";
 
 @Injectable({
   providedIn: 'root'
@@ -26,15 +27,15 @@ export class OrderService {
     return this.http.get(`${this.baseUrl}/id/${id}`);
   }
 
-  getAllOrdersByLogin(login: string): Observable<Object> {
-    return this.http.get(`${this.baseUrl}/login/${login}`);
+  getAllOrdersByLogin(login: string): Observable<Order[]> {
+    return this.http.get<Order[]>(`${this.baseUrl}/login/${login}`);
   }
 
   getDishesByLogin(login: string): Observable<Object> {
     return this.http.get(`${this.baseUrl}/${login}`);
   }
 
-  getDishesByOrderId(orderId: number): Observable<Object> {
-    return this.http.get(`${this.baseUrl}/orderId/${orderId}`);
+  getDishesByOrderId(orderId: number): Observable<ShoppingCartDishDto[]> {
+    return this.http.get<ShoppingCartDishDto[]>(`${this.baseUrl}/orderId/${orderId}`);
   }
 }

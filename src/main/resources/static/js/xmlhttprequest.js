@@ -498,7 +498,7 @@ function orders() {
     }
     OrdersDto.dishesDtoList = dishList;
      console.log(dishList[0]);
-     console.log(dishList)
+     console.log(dishList);
      console.log(OrdersDto.dishesDtoList);
 
     post("/orders/create", OrdersDto, ordersCallBack);

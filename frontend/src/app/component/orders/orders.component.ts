@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {OrderService} from "../../service/order.service";
+import {Order} from "../../model/order";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-orders',
@@ -7,9 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrdersComponent implements OnInit {
 
-  constructor() { }
+  orders: Order[];
+  order: Order = new Order();
+
+  constructor(private orderService: OrderService, private router: Router) {
+  }
 
   ngOnInit() {
+    this.orderService.getAllOrdersByLogin(localStorage.getItem('username')).subscribe(data => {
+      this.orders = data;
+    });
+  }
+
+  details(id: number) {
+    localStorage.removeItem('orderId');
+    localStorage.setItem('orderId', id.toString());
+    this.router.navigate(['orderDish']);
   }
 
 }

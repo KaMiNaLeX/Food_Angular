@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {OrderService} from "../../service/order.service";
+import {Order} from "../../model/order";
+import {ShoppingCartDishDto} from "../../model/shopping-cart-dish-dto";
 
 @Component({
   selector: 'app-orders-dishes',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrdersDishesComponent implements OnInit {
 
-  constructor() { }
+  shoppingCartDishes: ShoppingCartDishDto[];
+
+  constructor(private orderService: OrderService) {
+  }
 
   ngOnInit() {
+    this.orderService.getDishesByOrderId(+localStorage.getItem('orderId')).subscribe(data => {
+      this.shoppingCartDishes = data;
+    });
   }
 
 }

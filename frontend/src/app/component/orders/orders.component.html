@@ -1,1 +1,26 @@
-<p>orders works!</p>
+<div class="card my-5">
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Order ID</th>
+        <th scope="col">Total price</th>
+        <th scope="col">Time order</th>
+        <th scope="col">Details</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let order of orders">
+        <td>{{ order.id }}</td>
+        <td>{{ order.sum }}</td>
+        <td>{{ order.timeOrder }}</td>
+        <td>
+          <button (click)="details(order.id)" class='btn btn-primary'>
+            <i class="c0">Details</i>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
