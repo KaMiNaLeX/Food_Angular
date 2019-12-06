@@ -1,1 +1,16 @@
-<p>deserts works!</p>
+<div class="card-columns top">
+  <div class="card lexa" *ngFor="let desert of deserts" style="width: 500px;">
+    <form (ngSubmit)="addToShoppingCart(desert.id)" #addToCartForm="ngForm">
+      <div class="card border-primary mb-3 lexa" style="max-width: 500px;">
+        <img src="{{desert.img_source}}" class="card-img-top" alt="">
+        <div class="card-body">
+          <h5 class="card-title">{{ desert.name }}</h5>
+          <p class="card-text">{{ desert.description }}</p>
+          <p class="card-text">Mass:{{ desert.mass }} gram</p>
+          <p class="card-text">Cost:{{ desert.cost }}$</p>
+          <button type="submit" class="btn btn-primary">Add to Cart</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

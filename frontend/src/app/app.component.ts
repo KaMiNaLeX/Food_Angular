@@ -13,7 +13,6 @@ export class AppComponent {
   title = 'frontend';
   principal = null;
   authenticated = false;
-  div1: boolean = true;
 
   logout() {
     this.authService.logout();
@@ -24,25 +23,21 @@ export class AppComponent {
   pizza() {
     localStorage.setItem('pizza', 'Pizza');
     this.router.navigate(['pizza']);
-    this.div1 = false;
   }
 
   burgers() {
     localStorage.setItem('burger', 'Burger');
     this.router.navigate(['burgers']);
-    this.div1 = false;
   }
 
   drinks() {
     localStorage.setItem('drink', 'Drink');
     this.router.navigate(['drinks']);
-    this.div1 = false;
   }
 
   deserts() {
     localStorage.setItem('desert', 'Dessert');
     this.router.navigate(['deserts']);
-    this.div1 = false;
   }
 
   shoppingCart() {
