@@ -5,4 +5,5 @@ export class Dish {
   name: string;
   img_source: string;
   menu_id: number;
+  cost:number;
 }

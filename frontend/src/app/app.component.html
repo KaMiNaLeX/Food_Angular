@@ -12,7 +12,7 @@
       </li>
       <div [hidden]="!authenticated">
         <li class="nav-item">
-          <button class="btn btn-link" type="button" mat-flat-button color="primary" (click)="pizza()">Pizza</button>
+
         </li>
       </div>
       <div [hidden]="!authenticated">
@@ -31,7 +31,37 @@
     <button type="button" mat-flat-button color="primary" (click)="logout()">Log out</button>
   </div>
 </nav>
-<div class="container-fluid">
+<div *ngIf="div1" class="container-fluid">
+  <div class="card text-white bg-dark mb-3 place1" style="max-width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Pizza</h5>
+      <p class="card-text">Here are the most delicious pizzas from around the world</p>
+    </div>
+    <button class="btn btn-primary" type="button" mat-flat-button color="primary" (click)="pizza()">Go to Pizza</button>
+  </div>
+  <div class="card text-white bg-dark mb-3 place2" style="max-width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Burgers</h5>
+      <p class="card-text">Here are the most delicious burgers from around the world</p>
+    </div>
+    <button class="btn btn-primary" type="button" mat-flat-button color="primary" (click)="burgers()">Go to Burgers</button>
+  </div>
+  <div class="card text-white bg-dark mb-3 place3" style="max-width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Drinks</h5>
+      <p class="card-text">Here are the most delicious drinks from around the world</p>
+    </div>
+    <button class="btn btn-primary" type="button" mat-flat-button color="primary" (click)="drinks()">Go to Drinks</button>
+  </div>
+  <div class="card text-white bg-dark mb-3 place4" style="max-width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Deserts</h5>
+      <p class="card-text">Here are the most delicious deserts from around the world</p>
+    </div>
+    <button class="btn btn-primary" type="button" mat-flat-button color="primary" (click)="deserts()">Go to Deserts</button>
+  </div>
+</div>
+<div>
   <router-outlet></router-outlet>
 </div>
 

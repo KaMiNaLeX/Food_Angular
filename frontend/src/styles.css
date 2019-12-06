@@ -6,3 +6,24 @@ label {
 h2 {
   color: darkred;
 }
+
+.place1 {
+  position: absolute;
+  left: 30px;
+  top: 100px;
+}
+.place2 {
+  position: absolute;
+  left: 500px;
+  top: 100px;
+}
+.place3 {
+  position: absolute;
+  left: 30px;
+  top: 350px;
+}
+.place4 {
+  position: absolute;
+  left: 500px;
+  top: 350px;
+}

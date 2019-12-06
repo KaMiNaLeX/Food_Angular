@@ -1,0 +1,11 @@
+.card-columns {
+  column-count: 2;
+}
+
+
+h5, p,small {
+  color: red;
+}
+.lexa {
+  background: black;
+}
