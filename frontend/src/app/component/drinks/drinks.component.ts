@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Dish} from "../../model/dish";
 import {ShoppingCart} from "../../model/shopping-cart";
 import {DishService} from "../../service/dish.service";
@@ -34,7 +34,9 @@ export class DrinksComponent implements OnInit {
     this.shoppingCartService.create(this.shoppingCart).subscribe(data => {
       this.shoppingCart = data;
     });
-    window.alert("Dish add to cart!")
+    if (clientId != null) {
+      window.alert("Dish add to cart!");
+    } else window.alert("Need to login or registration!")
   }
 
 }

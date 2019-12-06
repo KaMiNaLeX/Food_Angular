@@ -10,12 +10,12 @@
       <li class="nav-item">
         <a class="nav-link" href="/registry">Registration</a>
       </li>
-      <div [hidden]="!authenticated">
+      <div>
         <li class="nav-item">
           <button type="button" class="btn btn-link" (click)="shoppingCart()">Shopping Cart</button>
         </li>
       </div>
-      <div [hidden]="!authenticated">
+      <div>
         <li class="nav-item">
           <button type="button" class="btn btn-link" (click)="orders()">Orders</button>
         </li>

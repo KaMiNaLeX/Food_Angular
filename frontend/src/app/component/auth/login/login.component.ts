@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/']).then(() => {
             window.location.reload();
           });
-        }
+        } else window.alert("Wrong login or password!");
       }, (err) => {
         console.log(err);
       });

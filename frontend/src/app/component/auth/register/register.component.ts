@@ -34,7 +34,13 @@ export class RegisterComponent implements OnInit {
   onFormSubmit(form: NgForm) {
     this.authService.register(form)
       .subscribe(res => {
-        this.router.navigate(['login']);
+        if (res == null) {
+          window.alert("Login is used!")
+        } else {
+          window.alert("Registration is success!");
+          this.router.navigate(['login']);
+        }
+
       }, (err) => {
         console.log(err);
         alert(err.error);

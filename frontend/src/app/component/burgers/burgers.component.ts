@@ -34,7 +34,11 @@ export class BurgersComponent implements OnInit {
     this.shoppingCartService.create(this.shoppingCart).subscribe(data => {
       this.shoppingCart = data;
     });
-    window.alert("Dish add to cart!")
+    if (clientId != null){
+      window.alert("Dish add to cart!");
+    }
+    else window.alert("Need to login or registration!")
+
   }
 
 }
