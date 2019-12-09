@@ -28,4 +28,12 @@ export class OrdersComponent implements OnInit {
     this.router.navigate(['orderDish']);
   }
 
+  delete(id: number) {
+
+  }
+
+  deleteAll(count: number) {
+
+  }
+
 }

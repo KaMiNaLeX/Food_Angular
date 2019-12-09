@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {OrderService} from "../../service/order.service";
-import {Order} from "../../model/order";
 import {ShoppingCartDishDto} from "../../model/shopping-cart-dish-dto";
 
 @Component({

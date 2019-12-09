@@ -1,12 +1,13 @@
 <div class="card my-5 top">
   <div class="card-body">
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped" style="width: 1000px;">
       <thead class="thead-dark">
       <tr>
         <th scope="col">Order ID</th>
         <th scope="col">Total price</th>
         <th scope="col">Time order</th>
         <th scope="col">Details</th>
+        <th scope="col">Delete order</th>
       </tr>
       </thead>
       <tbody>
@@ -15,12 +16,20 @@
         <td>{{ order.sum }}</td>
         <td>{{ order.timeOrder }}</td>
         <td>
-          <button (click)="details(order.id)" class='btn btn-primary'>
-            <i class="c0">Details</i>
-          </button>
+          <button (click)="details(order.id)" class='btn btn-primary'>Details</button>
+        </td>
+        <td>
+          <button (click)="delete(order.id)" class='btn btn-danger'>Delete</button>
         </td>
       </tr>
       </tbody>
     </table>
   </div>
+</div>
+<div>
+  <form (ngSubmit)="deleteAll(orders.length)" #createOrderForm="ngForm">
+    <div>
+      <button type="submit" class="btn btn-danger delete" style="width: 1000px;">Clear All orders</button>
+    </div>
+  </form>
 </div>
