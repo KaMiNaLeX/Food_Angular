@@ -15,9 +15,7 @@ export class CheckOutComponent implements OnInit {
   shoppingCartDishes: ShoppingCartDishDto[];
   order: Order = new Order();
   login: string;
-
-  dishesDtoList: Dish[];
-  showDeleteMessage = false;
+  showDeleteMessage = "";
 
   constructor(private shoppingCartService: ShoppingCartService, private orderService: OrderService) {
   }
@@ -30,26 +28,52 @@ export class CheckOutComponent implements OnInit {
   }
 
   createOrder(count: number) {
-    var i = 0;
-    var clientId = localStorage.getItem('id');
-    this.order.timeOrder = new Date();
-    this.order.clientId = +clientId;
-    this.order.sum = 0;
-    this.order.dishesDtoList = new Array<Dish>();
-    for (i; i < count; i++) {
-      var dish = new Dish();
-      dish.description = document.getElementsByName('description')[i].textContent;
-      dish.id = +document.getElementsByName('dishId')[i].textContent;
-      dish.img_source = (<HTMLImageElement>document.getElementsByName('img_source')[i]).src.split("http://localhost:4200").join("");
-      dish.name = document.getElementsByName('name')[i].textContent;
-      dish.mass = +document.getElementsByName('mass')[i].textContent;
-      dish.menu_id = +document.getElementsByName('menuId')[i].textContent;
-      this.order.sum += +document.getElementsByName("cost")[i].textContent;
-      this.order.dishesDtoList.push(dish);
+    if (count != 0) {
+      window.alert("Order created!");
+      var i = 0;
+      var clientId = localStorage.getItem('id');
+      this.order.timeOrder = new Date();
+      this.order.clientId = +clientId;
+      this.order.sum = 0;
+      this.order.dishesDtoList = new Array<Dish>();
+      for (i; i < count; i++) {
+        var dish = new Dish();
+        dish.description = document.getElementsByName('description')[i].textContent;
+        dish.id = +document.getElementsByName('dishId')[i].textContent;
+        dish.img_source = (<HTMLImageElement>document.getElementsByName('img_source')[i]).src.split("http://localhost:4200").join("");
+        dish.name = document.getElementsByName('name')[i].textContent;
+        dish.mass = +document.getElementsByName('mass')[i].textContent;
+        dish.menu_id = +document.getElementsByName('menuId')[i].textContent;
+        this.order.sum += +document.getElementsByName("cost")[i].textContent;
+        this.order.dishesDtoList.push(dish);
+      }
+      this.orderService.create(this.order).subscribe(data => {
+        this.order = data;
+      });
+    } else {
+      window.alert("Shopping cart is Empty!");
     }
-    this.orderService.create(this.order).subscribe(data => {
-      this.order = data;
+
+  }
+
+  delete(id: number) {
+    this.shoppingCartService.delete(id).subscribe(data => {
+      this.showDeleteMessage = data;
     });
-    window.alert("Order created!")
+    window.alert("Dish remove from shopping cart!");
+    window.location.reload();
+  }
+
+  deleteAll(count: number) {
+    var i = 0;
+    var id;
+    for (i; i < count; i++) {
+      id = document.getElementsByName("id")[i].textContent;
+      this.shoppingCartService.delete(id).subscribe(data => {
+        this.showDeleteMessage = data;
+      });
+    }
+    window.alert("Now Shopping cart is empty!");
+    window.location.reload();
   }
 }

@@ -1,25 +1,40 @@
 <div class="card-columns top">
-  <div class="card" *ngFor="let shoppingCartDish of shoppingCartDishes" style="width: 500px;">
-    <div class="card border-primary mb-3" style="max-width: 500px;">
-      <img name="img_source" src="{{shoppingCartDish.img_source}}" class="card-img-top" alt="">
-      <div class="card-body">
-        <a><h5 name="name" class="card-title">{{ shoppingCartDish.name }}</h5></a>
-        <div><label name="description" class="card-text">{{ shoppingCartDish.description }}</label></div>
-        <br/>
-        <div><label name="category" class="card-text">{{ shoppingCartDish.category }}</label></div>
-        <a> Cost:<label name="cost" class="card-text">{{ shoppingCartDish.cost }}</label>$</a>
-        <a><label name="dishId" hidden="hidden" class="card-text">{{ shoppingCartDish.dish_id }}</label></a>
-        <a><label name="menuId" hidden="hidden" class="card-text">{{ shoppingCartDish.menu_id }}</label></a>
-      </div>
-      <div class="card-footer">
-        <small name="mass" class="text-muted">{{ shoppingCartDish.mass }}</small>
-      </div>
+  <div class="card lexa" *ngFor="let shoppingCartDish of shoppingCartDishes" style="width: 500px;">
+    <div class="card border-primary mb-3 lexa" style="max-width: 500px;">
+      <form (ngSubmit)="delete(shoppingCartDish.id)" #createOrderForm="ngForm">
+        <img name="img_source" src="{{shoppingCartDish.img_source}}" class="card-img-top" alt="">
+        <div class="card-body">
+          <h5 name="name" class="card-title">{{ shoppingCartDish.name }}</h5>
+          <p name="id" hidden="hidden" class="card-text">{{ shoppingCartDish.id }}</p>
+          <p name="description" class="card-text">{{ shoppingCartDish.description }}</p>
+          <p name="category" class="card-text">{{ shoppingCartDish.category }}</p>
+          <p name="cost" class="card-text"><label> Cost:</label>{{ shoppingCartDish.cost }}<label> $</label></p>
+          <p name="dishId" hidden="hidden" class="card-text">{{ shoppingCartDish.dish_id }}</p>
+          <p name="menuId" hidden="hidden" class="card-text">{{ shoppingCartDish.menu_id }}</p>
+          <button type="submit" class="btn btn-danger">Delete order</button>
+        </div>
+        <div class="card-footer">
+          <small name="mass" class="text-muted">Mass:{{ shoppingCartDish.mass }} gram</small>
+        </div>
+        <div>
+        </div>
+      </form>
     </div>
-
   </div>
 </div>
-<form (ngSubmit)="createOrder(shoppingCartDishes.length)" #createOrderForm="ngForm">
-  <div>
-    <button type="submit" class="btn btn-primary">Create order</button>
-  </div>
-</form>
+<div>
+  <form (ngSubmit)="createOrder(shoppingCartDishes.length)" #createOrderForm="ngForm">
+    <div>
+      <button type="submit" class="btn btn-success create" style="width: 1000px;">Create order</button>
+    </div>
+  </form>
+</div>
+<div>
+  <form (ngSubmit)="deleteAll(shoppingCartDishes.length)" #createOrderForm="ngForm">
+    <div>
+      <button type="submit" class="btn btn-danger delete" style="width: 1000px;">Clear Shopping Cart</button>
+    </div>
+  </form>
+</div>
+
+
