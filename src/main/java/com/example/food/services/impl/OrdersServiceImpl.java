@@ -1,9 +1,8 @@
 package com.example.food.services.impl;
 
 import com.example.food.dto.adminDto.DishesDto;
-import com.example.food.dto.clientDto.OrderDishDto;
-import com.example.food.dto.clientDto.OrderMenuDto;
 import com.example.food.dto.adminDto.OrdersDto;
+import com.example.food.dto.clientDto.OrderMenuDto;
 import com.example.food.models.ClientsDishes;
 import com.example.food.models.Orders;
 import com.example.food.repositories.ClientsDishesRepository;
@@ -88,17 +87,27 @@ public class OrdersServiceImpl implements OrdersService, ModelMapperService {
     }
 
     @Override
-    public List getDishesByLogin(String login){
+    public List getDishesByLogin(String login) {
         List<OrderMenuDto> orderMenuDtoList = new ArrayList<>();
         map(orderRepository.getDishesByLogin(login), orderMenuDtoList);
         return orderMenuDtoList;
     }
 
     @Override
-    public List getDishesByOrderId(Long orderId){
+    public List getDishesByOrderId(Long orderId) {
         List<OrdersDto> ordersDtoList = new ArrayList<>();
-        map(orderRepository.getDishesByOrderId(orderId),ordersDtoList);
+        map(orderRepository.getDishesByOrderId(orderId), ordersDtoList);
         return ordersDtoList;
+    }
+
+    @Override
+    public void delete(Long orderId) {
+        ClientsDishes clientsDishes = clientsDishesRepository.getByOrderId(orderId);
+        clientsDishesRepository.delete(clientsDishes);
+
+        Orders orders = orderRepository.getById(orderId);
+        orderRepository.delete(orders);
+
     }
 
 }

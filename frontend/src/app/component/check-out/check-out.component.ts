@@ -16,6 +16,7 @@ export class CheckOutComponent implements OnInit {
   order: Order = new Order();
   login: string;
   showDeleteMessage = "";
+  dateToday: string;
 
   constructor(private shoppingCartService: ShoppingCartService, private orderService: OrderService) {
   }
@@ -27,12 +28,15 @@ export class CheckOutComponent implements OnInit {
     });
   }
 
+
   createOrder(count: number) {
+
     if (count != 0) {
       window.alert("Order created!");
       var i = 0;
       var clientId = localStorage.getItem('id');
       this.order.timeOrder = new Date();
+      this.order.timeOrder.toISOString();
       this.order.clientId = +clientId;
       this.order.sum = 0;
       this.order.dishesDtoList = new Array<Dish>();

@@ -39,4 +39,8 @@ export class OrderService {
     return this.http.get<ShoppingCartDishDto[]>(`${this.baseUrl}/orderId/${orderId}`);
   }
 
+  public delete(orderId: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/delete/${orderId}`, {responseType: 'text'});
+  }
+
 }

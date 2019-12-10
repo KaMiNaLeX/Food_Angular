@@ -17,4 +17,6 @@ public interface OrdersService {
 
     List getDishesByOrderId(Long orderId);
 
+    void delete(Long orderId);
+
 }

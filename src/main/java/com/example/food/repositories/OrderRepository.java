@@ -50,4 +50,6 @@ public interface OrderRepository extends JpaRepository<Orders, Long> {
                     "WHERE O.ID=:ORDERID", nativeQuery = true)
     List<Map<String, Object>> getDishesByOrderId(@Param("ORDERID") Long orderId);
 
+    Orders getById(Long orderId);
+
 }

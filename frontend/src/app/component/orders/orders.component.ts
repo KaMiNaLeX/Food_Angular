@@ -12,6 +12,7 @@ export class OrdersComponent implements OnInit {
 
   orders: Order[];
   order: Order = new Order();
+  showDeleteMessage = "";
 
   constructor(private orderService: OrderService, private router: Router) {
   }
@@ -29,7 +30,11 @@ export class OrdersComponent implements OnInit {
   }
 
   delete(id: number) {
-
+    this.orderService.delete(id).subscribe(data => {
+      this.showDeleteMessage = data;
+    });
+    window.alert("Order remove!");
+    window.location.reload();
   }
 
   deleteAll(count: number) {
