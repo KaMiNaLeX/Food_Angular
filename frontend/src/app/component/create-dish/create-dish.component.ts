@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {AdminService} from "../../service/admin.service";
-import {Dish} from "../../model/dish";
+import {DishCreate} from "../../model/dish-create";
 
 @Component({
   selector: 'app-create-dish',
@@ -10,10 +10,10 @@ import {Dish} from "../../model/dish";
 })
 export class CreateDishComponent {
 
-  dish: Dish;
+  dish: DishCreate;
 
   constructor(private route: ActivatedRoute, private router: Router, private adminService: AdminService) {
-    this.dish = new Dish();
+    this.dish = new DishCreate();
   }
 
   onSubmit() {

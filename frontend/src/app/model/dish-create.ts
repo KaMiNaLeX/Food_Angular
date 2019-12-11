@@ -1,9 +1,8 @@
-export class Dish {
+export class DishCreate {
   id: number;
   description: string;
   mass: number;
   name: string;
-  img_source: string;
+  imgSource: string;
   menuId: number;
-  cost:number;
 }

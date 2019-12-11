@@ -44,7 +44,7 @@ export class CheckOutComponent implements OnInit {
         var dish = new Dish();
         dish.description = document.getElementsByName('description')[i].textContent;
         dish.id = +document.getElementsByName('dishId')[i].textContent;
-        dish.imgSource = (<HTMLImageElement>document.getElementsByName('img_source')[i]).src.split("http://localhost:4200").join("");
+        dish.img_source = (<HTMLImageElement>document.getElementsByName('img_source')[i]).src.split("http://localhost:4200").join("");
         dish.name = document.getElementsByName('name')[i].textContent;
         dish.mass = +document.getElementsByName('mass')[i].textContent;
         dish.menuId = +document.getElementsByName('menuId')[i].textContent;
