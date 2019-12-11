@@ -24,11 +24,15 @@ export class AuthService {
       );
   }
 
+  role() {
+    return this.http.get(apiUrl + 'role');
+  }
+
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('username');
     localStorage.removeItem('id');
-    localStorage.removeItem('pizza');
+    localStorage.removeItem('orderId');
   }
 
   register(data: any): Observable<any> {

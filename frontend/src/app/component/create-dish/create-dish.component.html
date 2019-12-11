@@ -1,0 +1,54 @@
+<div class="user my-5">
+  <div class="user-body">
+    <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" [(ngModel)]="dish.name"
+               class="form-control" id="name" name="name" placeholder="Enter name dish"
+               required #name="ngModel">
+        <div [hidden]="!name.pristine" class="alert alert-danger">Name is required</div>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" [(ngModel)]="dish.description"
+               class="form-control" id="description" name="description" placeholder="Enter description"
+               required #description="ngModel">
+        <div [hidden]="!description.pristine" class="alert alert-danger">Description is required</div>
+      </div>
+
+      <div class="form-group">
+        <label for="mass">Mass</label>
+        <input type="text" [(ngModel)]="dish.mass"
+               class="form-control" id="mass" name="mass" placeholder="Enter mass"
+               required #mass="ngModel">
+        <div [hidden]="!mass.pristine" class="alert alert-danger">Mass is required</div>
+      </div>
+
+
+      <div class="form-group">
+        <label for="img_source">Img_source</label>
+        <input type="text" [(ngModel)]="dish.img_source"
+               class="form-control" id="img_source" name="img_source" placeholder="Enter your img_source"
+               required #img_source="ngModel">
+        <div [hidden]="!img_source.pristine" class="alert alert-danger">Img_source is required</div>
+      </div>
+
+      <div class="form-group">
+        <label for="menu_id">Menu_id</label>
+        <input type="text" [(ngModel)]="dish.menu_id"
+               class="form-control" id="menu_id" name="menu_id" placeholder="Enter menu_id"
+               required #menu_id="ngModel">
+        <div [hidden]="!menu_id.pristine" class="alert alert-danger">Menu_id is required</div>
+      </div>
+
+      <div hidden="hidden" class="form-group">
+        <label for="cost">cost</label>
+        <input type="text" [(ngModel)]="dish.cost"
+               class="form-control" value="0" id="cost" name="cost" placeholder="">
+      </div>
+
+      <button type="submit" [disabled]="!userForm.form.valid" class="btn btn-info">Submit</button>
+    </form>
+  </div>
+</div>

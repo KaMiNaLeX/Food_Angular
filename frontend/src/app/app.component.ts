@@ -13,6 +13,7 @@ export class AppComponent {
   title = 'frontend';
   principal = null;
   authenticated = false;
+  admin = false;
 
   logout() {
     this.authService.logout();
@@ -51,6 +52,13 @@ export class AppComponent {
   constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService,
               private http: HttpClient) {
     this.authenticate();
+    this.role();
+  }
+
+  role() {
+    this.authService.role().subscribe(data => {
+      this.admin = this.authenticated && data['role'] && data['role'].indexOf('ADMIN_ROLE') > -1;
+    });
   }
 
   authenticate() {

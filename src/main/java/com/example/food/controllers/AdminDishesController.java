@@ -16,7 +16,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 @RestController
-@RequestMapping("admin")
+@RequestMapping("/admin")
 public class AdminDishesController {
     private static String UPLOADED_FOLDER = "D://DOWNLOAD//Универ//III курс//2 сем//ПСКП//курсач//food(2)//src//main//resources//static//images";
     @Autowired

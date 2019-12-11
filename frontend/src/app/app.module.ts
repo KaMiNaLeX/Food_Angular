@@ -29,6 +29,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {RegisterComponent} from './component/auth/register/register.component';
 import {AuthService} from "./service/auth.service";
 import {ShoppingCartService} from "./service/shopping-cart.service";
+import { CreateDishComponent } from './component/create-dish/create-dish.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import {ShoppingCartService} from "./service/shopping-cart.service";
     OrdersDishesComponent,
     PizzaComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    CreateDishComponent
   ],
   imports: [
     BrowserModule,

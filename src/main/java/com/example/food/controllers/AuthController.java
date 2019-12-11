@@ -5,12 +5,14 @@ import com.example.food.dto.AuthBodyDTO;
 import com.example.food.models.Clients;
 import com.example.food.repositories.ClientRepository;
 import com.example.food.services.impl.CustomUserDetailsService;
+import com.example.food.services.security.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -71,6 +73,21 @@ public class AuthController {
         Map<Object, Object> model = new HashMap<>();
         model.put("message", "User registered successfully");
         return ok(model);
+    }
+
+    @GetMapping("/role")
+    public ResponseEntity userRole(Principal user) {
+        if (user == null) {
+            throw new BadCredentialsException("User does not login");
+        } else {
+            String username = user.getName();
+            Clients clients = users.getByLogin(username);
+            UserRole userRole = clients.getUserRole();
+            Map<Object, Object> model = new HashMap<>();
+            model.put("username", username);
+            model.put("role", userRole.name());
+            return ok(model);
+        }
     }
 
     @RequestMapping("/user")
