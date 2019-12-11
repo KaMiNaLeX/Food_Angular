@@ -34,7 +34,9 @@ export class OrdersComponent implements OnInit {
       this.showDeleteMessage = data;
     });
     window.alert("Order remove!");
-    window.location.reload();
+    this.orderService.getAllOrdersByLogin(localStorage.getItem('username')).subscribe(data => {
+      this.orders = data;
+    });
   }
 
   deleteAll(count: number) {

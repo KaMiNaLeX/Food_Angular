@@ -10,5 +10,5 @@ import java.util.List;
 public interface ClientsDishesRepository extends JpaRepository<ClientsDishes, Long> {
     List<ClientsDishes> findByClientId(Long clientId);
 
-    ClientsDishes getByOrderId(Long orderId);
+    List<ClientsDishes> getByOrderId(Long orderId);
 }

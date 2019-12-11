@@ -62,8 +62,16 @@ public class OrdersController {
     }
 
     @DeleteMapping("/delete/{orderId}")
-    public void delete(@PathVariable("orderId") Long orderId) {
-        ordersService.delete(orderId);
+    public void delete(@PathVariable("orderId") Long orderId, Principal principal) {
+        //current log-in clientId
+        BigInteger id = clientsService.getByLogin(principal.getName()).getId();
+        //clientId по запросу
+        BigInteger clientId = ordersService.getOrderById(orderId).getClientId();
+        if (!id.equals(clientId)) {
+
+        } else {
+            ordersService.delete(orderId);
+        }
     }
 
     @GetMapping("/orderId/{orderId}")

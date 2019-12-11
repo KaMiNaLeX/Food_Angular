@@ -17,6 +17,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
@@ -101,9 +102,12 @@ public class OrdersServiceImpl implements OrdersService, ModelMapperService {
     }
 
     @Override
+    @Transactional
     public void delete(Long orderId) {
-        ClientsDishes clientsDishes = clientsDishesRepository.getByOrderId(orderId);
-        clientsDishesRepository.delete(clientsDishes);
+        List<ClientsDishes> clientsDishesList = clientsDishesRepository.getByOrderId(orderId);
+        for (int i = 0; i < clientsDishesList.size(); i++) {
+            clientsDishesRepository.delete(clientsDishesList.get(i));
+        }
 
         Orders orders = orderRepository.getById(orderId);
         orderRepository.delete(orders);
