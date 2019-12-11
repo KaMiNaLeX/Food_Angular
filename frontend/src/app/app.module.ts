@@ -5,7 +5,6 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BurgersComponent} from './component/burgers/burgers.component';
 import {CheckOutComponent} from './component/check-out/check-out.component';
-import {CreateDishComponent} from './component/create-dish/create-dish.component';
 import {DesertsComponent} from './component/deserts/deserts.component';
 import {DrinksComponent} from './component/drinks/drinks.component';
 import {OrdersComponent} from './component/orders/orders.component';
@@ -36,7 +35,6 @@ import {ShoppingCartService} from "./service/shopping-cart.service";
     AppComponent,
     BurgersComponent,
     CheckOutComponent,
-    CreateDishComponent,
     DesertsComponent,
     DrinksComponent,
     OrdersComponent,
