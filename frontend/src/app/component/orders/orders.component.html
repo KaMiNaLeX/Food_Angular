@@ -25,9 +25,8 @@
   </div>
 </div>
 <div>
-  <form (ngSubmit)="deleteAll(orders.length)" #createOrderForm="ngForm">
-    <div>
-      <button type="submit" class="btn btn-danger delete" style="width: 1000px;">Clear All orders</button>
-    </div>
-  </form>
+  <div>
+    <button type="submit" (click)="deleteAll()" class="btn btn-danger delete" style="width: 1000px;">Clear All orders
+    </button>
+  </div>
 </div>

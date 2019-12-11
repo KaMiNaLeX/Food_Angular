@@ -39,8 +39,15 @@ export class OrdersComponent implements OnInit {
     });
   }
 
-  deleteAll(count: number) {
-
+  deleteAll() {
+    let clientId = localStorage.getItem("id");
+    this.orderService.deleteAll(+clientId).subscribe(data => {
+      this.showDeleteMessage = data;
+    });
+    window.alert("All orders removed!");
+    this.orderService.getAllOrdersByLogin(localStorage.getItem('username')).subscribe(data => {
+      this.orders = data;
+    });
   }
 
 }

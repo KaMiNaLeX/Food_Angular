@@ -1,5 +1,6 @@
 package com.example.food.repositories;
 
+import com.example.food.dto.adminDto.OrdersDto;
 import com.example.food.models.Orders;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -51,5 +52,7 @@ public interface OrderRepository extends JpaRepository<Orders, Long> {
     List<Map<String, Object>> getDishesByOrderId(@Param("ORDERID") Long orderId);
 
     Orders getById(Long orderId);
+
+    List<Orders> findAllByClientId(Long clientId);
 
 }

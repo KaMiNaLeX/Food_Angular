@@ -114,4 +114,18 @@ public class OrdersServiceImpl implements OrdersService, ModelMapperService {
 
     }
 
+    @Override
+    @Transactional
+    public void deleteAll(Long clientId) {
+        List<ClientsDishes> clientsDishesList = clientsDishesRepository.findByClientId(clientId);
+        for (int i = 0; i < clientsDishesList.size(); i++) {
+            clientsDishesRepository.delete(clientsDishesList.get(i));
+        }
+
+        List<Orders> ordersList = orderRepository.findAllByClientId(clientId);
+        for (int i = 0; i < ordersList.size(); i++) {
+            orderRepository.delete(ordersList.get(i));
+        }
+    }
+
 }

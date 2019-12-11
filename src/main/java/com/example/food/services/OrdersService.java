@@ -19,4 +19,6 @@ public interface OrdersService {
 
     void delete(Long orderId);
 
+    void deleteAll(Long clientId);
+
 }

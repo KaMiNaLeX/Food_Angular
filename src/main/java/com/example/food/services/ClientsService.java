@@ -16,6 +16,8 @@ public interface ClientsService {
 
     List getClientByLogin(String login);
 
+    ClientsDto getById(Long clientId);
+
     ClientsDto getByLogin(String login);
 
     ClientsDto getIdByLogin(String login);

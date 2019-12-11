@@ -43,4 +43,8 @@ export class OrderService {
     return this.http.delete(`${this.baseUrl}/delete/${orderId}`, {responseType: 'text'});
   }
 
+  public deleteAll(clientId: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/deleteAll/${clientId}`, {responseType: 'text'})
+  }
+
 }

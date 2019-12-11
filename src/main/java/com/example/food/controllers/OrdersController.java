@@ -74,6 +74,18 @@ public class OrdersController {
         }
     }
 
+    @DeleteMapping("/deleteAll/{clientId}")
+    public void deleteAll(@PathVariable("clientId") Long clientId, Principal principal) {
+        //current log-in clientId
+        BigInteger id = clientsService.getByLogin(principal.getName()).getId();
+        BigInteger clientid = clientsService.getById(clientId).getId();
+        if (!id.equals(clientid)) {
+
+        } else {
+            ordersService.deleteAll(clientId);
+        }
+    }
+
     @GetMapping("/orderId/{orderId}")
     public List getDishesByOrderId(@PathVariable("orderId") Long orderId, Principal principal) {
         //current log-in clientId

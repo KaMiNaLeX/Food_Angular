@@ -1,6 +1,5 @@
 package com.example.food.repositories;
 
-import com.example.food.dto.ClientsDto;
 import com.example.food.models.Clients;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -9,7 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 import java.util.Map;
 
 @Repository
@@ -32,5 +30,6 @@ public interface ClientRepository extends JpaRepository<Clients, Long> {
 
     Clients getByLogin(String login);
 
+    Clients getById(Long id);
 
 }
