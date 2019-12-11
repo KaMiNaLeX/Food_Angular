@@ -3,7 +3,7 @@ export class Dish {
   description: string;
   mass: number;
   name: string;
-  img_source: string;
-  menu_id: number;
+  imgSource: string;
+  menuId: number;
   cost:number;
 }

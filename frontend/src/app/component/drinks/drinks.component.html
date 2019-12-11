@@ -2,7 +2,7 @@
   <div class="card lexa" *ngFor="let drink of drinks" style="width: 500px;">
     <form (ngSubmit)="addToShoppingCart(drink.id)" #addToCartForm="ngForm">
       <div class="card border-primary mb-3 lexa" style="max-width: 500px;">
-        <img src="{{drink.img_source}}" class="card-img-top" alt="">
+        <img src="{{drink.imgSource}}" class="card-img-top" alt="">
         <div class="card-body">
           <h5 class="card-title">{{ drink.name }}</h5>
           <p class="card-text">{{ drink.description }}</p>

@@ -44,10 +44,10 @@ export class CheckOutComponent implements OnInit {
         var dish = new Dish();
         dish.description = document.getElementsByName('description')[i].textContent;
         dish.id = +document.getElementsByName('dishId')[i].textContent;
-        dish.img_source = (<HTMLImageElement>document.getElementsByName('img_source')[i]).src.split("http://localhost:4200").join("");
+        dish.imgSource = (<HTMLImageElement>document.getElementsByName('img_source')[i]).src.split("http://localhost:4200").join("");
         dish.name = document.getElementsByName('name')[i].textContent;
         dish.mass = +document.getElementsByName('mass')[i].textContent;
-        dish.menu_id = +document.getElementsByName('menuId')[i].textContent;
+        dish.menuId = +document.getElementsByName('menuId')[i].textContent;
         this.order.sum += +document.getElementsByName("cost")[i].textContent;
         this.order.dishesDtoList.push(dish);
       }

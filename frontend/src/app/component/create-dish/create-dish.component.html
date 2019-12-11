@@ -1,4 +1,4 @@
-<div class="user my-5">
+<div class="container-fluid top">
   <div class="user-body">
     <form (ngSubmit)="onSubmit()" #userForm="ngForm">
       <div class="form-group">
@@ -28,7 +28,7 @@
 
       <div class="form-group">
         <label for="img_source">Img_source</label>
-        <input type="text" [(ngModel)]="dish.img_source"
+        <input type="text" [(ngModel)]="dish.imgSource"
                class="form-control" id="img_source" name="img_source" placeholder="Enter your img_source"
                required #img_source="ngModel">
         <div [hidden]="!img_source.pristine" class="alert alert-danger">Img_source is required</div>
@@ -36,7 +36,7 @@
 
       <div class="form-group">
         <label for="menu_id">Menu_id</label>
-        <input type="text" [(ngModel)]="dish.menu_id"
+        <input type="text" [(ngModel)]="dish.menuId"
                class="form-control" id="menu_id" name="menu_id" placeholder="Enter menu_id"
                required #menu_id="ngModel">
         <div [hidden]="!menu_id.pristine" class="alert alert-danger">Menu_id is required</div>

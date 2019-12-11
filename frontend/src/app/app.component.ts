@@ -19,6 +19,7 @@ export class AppComponent {
     this.authService.logout();
     this.router.navigate(['login']);
     this.authenticated = false;
+    this.admin = false;
   }
 
   pizza() {
@@ -49,6 +50,10 @@ export class AppComponent {
     this.router.navigate(['orders']);
   }
 
+  adminPanel() {
+    this.router.navigate(['adminPanel']);
+  }
+
   constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService,
               private http: HttpClient) {
     this.authenticate();
@@ -57,7 +62,7 @@ export class AppComponent {
 
   role() {
     this.authService.role().subscribe(data => {
-      this.admin = this.authenticated && data['role'] && data['role'].indexOf('ADMIN_ROLE') > -1;
+      this.admin = data['role'].indexOf('ADMIN_ROLE') > -1;
     });
   }
 

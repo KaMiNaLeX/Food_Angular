@@ -22,7 +22,7 @@ const routes: Routes = [
   {path: 'orders', component: OrdersComponent},
   {path: 'checkout', component: CheckOutComponent},
   {path: 'orderDish', component: OrdersDishesComponent},
-  {path: 'admin', component: CreateDishComponent}
+  {path: 'adminPanel', component: CreateDishComponent}
 ];
 
 @NgModule({
