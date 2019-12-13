@@ -1,5 +1,6 @@
 <div class="card-columns top">
   <div class="card lexa" *ngFor="let shoppingCartDish of shoppingCartDishes" style="width: 500px;">
+    <h2 style="margin: auto">Shopping Cart</h2>
     <div class="card border-primary mb-3 lexa" style="max-width: 500px;">
       <form (ngSubmit)="delete(shoppingCartDish.id)" #createOrderForm="ngForm">
         <img name="img_source" src="{{shoppingCartDish.img_source}}" class="card-img-top" alt="">
@@ -11,7 +12,7 @@
           <p>Cost($):<label name="cost" class="card-text">{{ shoppingCartDish.cost }}</label></p>
           <p name="dishId" hidden="hidden" class="card-text">{{ shoppingCartDish.dish_id }}</p>
           <p name="menuId" hidden="hidden" class="card-text">{{ shoppingCartDish.menu_id }}</p>
-          <button type="submit" class="btn btn-danger">Delete order</button>
+          <button type="submit" class="btn btn-danger">Delete dih from cart</button>
         </div>
         <div class="card-footer">
           <small name="mass" class="text-muted">Mass:{{ shoppingCartDish.mass }} gram</small>

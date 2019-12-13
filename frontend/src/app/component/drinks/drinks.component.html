@@ -1,5 +1,6 @@
 <div class="card-columns top">
   <div class="card lexa" *ngFor="let drink of drinks" style="width: 500px;">
+    <h2 style="margin: auto">Drink</h2>
     <form (ngSubmit)="addToShoppingCart(drink.id)" #addToCartForm="ngForm">
       <div class="card border-primary mb-3 lexa" style="max-width: 500px;">
         <img src="{{drink.img_source}}" class="card-img-top" alt="">
